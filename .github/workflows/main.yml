@@ -23,6 +23,10 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.302
+        
+    # Runs NPM Install to install Node Packages
+    - name: Runs NPM Install
+      run: npm install
 
     # publishes Blazor project to the release-folder
     - name: Publish .NET Core Project
