@@ -1,0 +1,19 @@
+﻿@page "/add-card"
+<h3>AddCard</h3>
+<h2>@test</h2>
+
+<EditForm Model="@cardModel" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <InputText id="englishMeaning" @bind-Value="cardModel.EnglishMeaning" />
+    <InputNumber id="strokeNumber" @bind-Value="cardModel.NumberStrokes" />
+    <InputNumber id="number" @bind-Value="cardModel.Number" />
+    <InputText id="kanji" @bind-Value="cardModel.Kanji" />
+    <InputText id="story" @bind-Value="cardModel.Story" />
+    <InputText id="notes" @bind-Value="cardModel.Notes" />
+
+    <button type="submit">Submit</button>
+</EditForm>
+
+
