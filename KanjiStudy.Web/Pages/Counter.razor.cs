@@ -37,7 +37,7 @@ namespace KanjiStudy.Web.Pages
                 ReviewDate = System.DateTime.MinValue
             };
             
-            await LocalCardStore.SaveVehicleAsync(item1);
+            await LocalCardStore.SaveCardAsync(item1);
         }
         async Task GetItems()
         {

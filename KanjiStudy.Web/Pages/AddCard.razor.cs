@@ -29,7 +29,7 @@ namespace KanjiStudy.Web.Pages
                 ReviewDate = System.DateTime.MinValue
             };
 
-            await _localCardStore.SaveVehicleAsync(item1);
+            await _localCardStore.SaveCardAsync(item1);
         }
     }
 }

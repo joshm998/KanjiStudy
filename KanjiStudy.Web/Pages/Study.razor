@@ -1,33 +1,42 @@
 ﻿@page "/study"
+@using SpacedRepetition.Net
 <h3>Study</h3>
 <h2>@sessionResult</h2>
-<button class="btn btn-primary" @onclick="StartStudySession">Start Study Session</button>
-<button class="btn btn-primary" @onclick="ReviewItem">Review Item</button>
-
-@if(currentItem != null) {
-	<h1>Current Item</h1>
-	<h2>@currentItem.Kanji</h2>
-	<h2>@currentItem.Notes</h2>
-	<h2>@currentItem.Number</h2>
-	<h2>@currentItem.NumberStrokes</h2>
-	<h2>@currentItem.Story</h2>
-	<h2>@currentItem.ReviewDate</h2>
-	<h2>@currentItem.PreviousCorrectReview</h2>
-	<h2>@currentItem.CorrectReviewStreak</h2>
-	<h2>@currentItem.DifficultyRating.Percentage</h2>
-	<h2>@currentItem.EnglishMeaning</h2>
+@if (!sessionResult)
+{
+	<button class="btn btn-primary" @onclick="StartStudySession">Start Study Session</button>
 }
+else
+{
+	@if (currentItem == null)
+	{
+		<h1>All Items Completed</h1>
+	}
+	else
+	{
+		@if (!flippedCard)
+		{
+			<h2>@currentItem.EnglishMeaning</h2>
+			<button class="btn btn-primary" @onclick="FlipCard">Flip Card</button>
+		}
 
-@if(previousItem != null) {
-	<h1>Previous Item</h1>
-	<h2>@previousItem.Kanji</h2>
-	<h2>@previousItem.Notes</h2>
-	<h2>@previousItem.Number</h2>
-	<h2>@previousItem.NumberStrokes</h2>
-	<h2>@previousItem.Story</h2>
-	<h2>@previousItem.ReviewDate</h2>
-	<h2>@previousItem.PreviousCorrectReview</h2>
-	<h2>@previousItem.CorrectReviewStreak</h2>
-	<h2>@previousItem.DifficultyRating.Percentage</h2>
-	<h2>@previousItem.EnglishMeaning</h2>
+		else
+		{
+			<h1>Current Item</h1>
+			<h2>@currentItem.Kanji</h2>
+			<h2>@currentItem.Notes</h2>
+			<h2>@currentItem.Number</h2>
+			<h2>@currentItem.NumberStrokes</h2>
+			<h2>@currentItem.Story</h2>
+			<h2>@currentItem.ReviewDate</h2>
+			<h2>@currentItem.PreviousCorrectReview</h2>
+			<h2>@currentItem.CorrectReviewStreak</h2>
+			<h2>@currentItem.DifficultyRating.Percentage</h2>
+			<h2>@currentItem.EnglishMeaning</h2>
+			<button class="btn btn-primary" @onclick="() => ReviewItem(ReviewOutcome.NeverReviewed)">Unsure</button>
+			<button class="btn btn-primary" @onclick="() => ReviewItem(ReviewOutcome.Incorrect)">Again</button>
+			<button class="btn btn-primary" @onclick="() => ReviewItem(ReviewOutcome.Hesitant)">Hard</button>
+			<button class="btn btn-primary" @onclick="() => ReviewItem(ReviewOutcome.Perfect)">Perfect</button>
+		}
+	}
 }
