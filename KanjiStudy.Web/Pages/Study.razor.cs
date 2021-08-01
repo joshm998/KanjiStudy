@@ -1,50 +1,38 @@
 using KanjiStudy.SRS;
 using KanjiStudy.SRS.Models;
+using KanjiStudy.Web.Data;
+using Microsoft.AspNetCore.Components;
+using SpacedRepetition.Net;
+using System.Threading.Tasks;
+
 namespace KanjiStudy.Web.Pages
 {
     public partial class Study
     {
+        [Inject]
+        public virtual LocalCardStore _localCardStore { get; set; }
+
         private bool sessionResult = false;
+        private bool flippedCard = false;
         StudySession _session = new StudySession();
         RTKItem currentItem;
-        RTKItem previousItem;
-        private void StartStudySession()
+        private async Task StartStudySession()
         {
-            var item1 = new RTKItem
-            {
-                Number = 1,
-                NumberStrokes = 0,
-                EnglishMeaning = "Test",
-                Kanji = "H",
-                Story = "This is a test",
-                Notes = "No Notes Yet",
-                CorrectReviewStreak = 0,
-                DifficultyRating = 100,
-                PreviousCorrectReview = System.DateTime.MinValue,
-                ReviewDate = System.DateTime.MinValue
-            };
-            var item2 = new RTKItem
-            {
-                Number = 0,
-                NumberStrokes = 0,
-                EnglishMeaning = "In",
-                Kanji = "O",
-                Story = "in an item",
-                Notes = "No Notes Yet",
-                CorrectReviewStreak = 0,
-                DifficultyRating = 100,
-                PreviousCorrectReview = System.DateTime.MinValue,
-                ReviewDate = System.DateTime.MinValue
-            };
-            var items = new[] { item1, item2 };
+            var items = await _localCardStore.GetCardsAsync();
             sessionResult = _session.StartStudySession(items);
             currentItem = _session.GetNextItem();
         }
-        private void ReviewItem()
+        private async void ReviewItem(ReviewOutcome outcome)
         {
-            var reviewedItem = _session.ReviewItem(currentItem, SpacedRepetition.Net.ReviewOutcome.Perfect);
-            previousItem = reviewedItem;
+            var reviewedItem = _session.ReviewItem(currentItem, outcome);
+            await _localCardStore.SaveCardAsync(reviewedItem);
             currentItem = _session.GetNextItem();
+            flippedCard = false;
+            StateHasChanged();
+        }
+        private void FlipCard()
+        {
+            flippedCard = !flippedCard;
         }
     }
-}
+} 

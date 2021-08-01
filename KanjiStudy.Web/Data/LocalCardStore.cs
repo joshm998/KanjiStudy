@@ -21,8 +21,11 @@ namespace KanjiStudy.Web.Data
                 "localCardStore.getAll", "cardstore");
         }
 
-        public ValueTask SaveVehicleAsync(RTKItem vehicle)
-            => PutAsync("cardstore", null, vehicle);
+        public ValueTask UpdateCardAsync(RTKItem card, string id)
+            => PutAsync("cardstore", id, card);
+
+        public ValueTask SaveCardAsync(RTKItem card)
+            => PutAsync("cardstore", null, card);
 
         ValueTask PutAsync<T>(string storeName, object key, T value)
             => js.InvokeVoidAsync("localCardStore.put", storeName, key, value);

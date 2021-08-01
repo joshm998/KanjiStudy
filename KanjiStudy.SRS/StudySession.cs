@@ -8,16 +8,19 @@ namespace KanjiStudy.SRS
 {
     public class StudySession
     {
-        private StudySession<RTKItem> _studySession; 
+        private StudySession<RTKItem> _studySession;
+        private List<RTKItem> _itemQueue;
         public bool StartStudySession(IEnumerable<RTKItem> items)
         {
             _studySession = new StudySession<RTKItem>(items);
+            _itemQueue = items.ToList();
             return true;
         }
 
         public RTKItem GetNextItem()
         {
-            var nextItem = _studySession.First();
+            var nextItem = _itemQueue.FirstOrDefault();
+            _itemQueue.Remove(nextItem);
             return nextItem;
         }
 
