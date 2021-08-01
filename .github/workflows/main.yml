@@ -26,7 +26,7 @@ jobs:
         
     # Runs NPM Install to install Node Packages
     - name: Runs NPM Install
-      run: npm install
+      run: npm install --prefix "./KanjiStudy.Web/" 
 
     # publishes Blazor project to the release-folder
     - name: Publish .NET Core Project
