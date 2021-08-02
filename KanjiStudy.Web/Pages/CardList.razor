@@ -1,0 +1,33 @@
+﻿@page "/cards"
+<h1 class="text-4xl">Card List</h1>
+
+@if (items == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="md:flex">
+        <div class="w-full p-4">
+            <div class="relative"> <input type="text" class="w-full h-12 shadow-md mb-3 rounded focus:outline-none px-3 focus:shadow-lg"
+                placeholder="Search..."> <i class="fa fa-search absolute right-3 top-4 text-gray-300"></i> </div>
+            <ul>
+                @foreach (var item in items)
+                {
+                    <li class="border-gray-400 flex flex-row mb-3">
+                        <div
+                    class="select-none cursor-pointer bg-gray-50 shadow-md rounded-md flex flex-1 items-center p-4  transition duration-500 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
+                            <div class="flex flex-col rounded-md text-4xl w-10 h-10 bg-gray-50 justify-center items-center mr-4">@item.Kanji
+                            </div>
+                            <div class="flex-1 pl-1 mr-16">
+                                <div class="font-medium">@item.EnglishMeaning</div>
+                                <div class="text-gray-600 text-sm">@item.Story</div>
+                            </div>
+                            <div class="text-gray-600 text-xs">Due: @item.ReviewDate</div>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+}
