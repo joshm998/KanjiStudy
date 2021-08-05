@@ -1,5 +1,11 @@
 ﻿@page "/cards"
-<h1 class="text-4xl">Card List</h1>
+<div class="flex px-4">
+    <h1 class="text-4xl flex-1 ">Card List</h1>
+    <NavLink href="/add-card" class="my-auto">
+        <i class="fas fa-plus text-2xl"></i>
+    </NavLink>
+</div>
+
 
 @if (items == null)
 {
