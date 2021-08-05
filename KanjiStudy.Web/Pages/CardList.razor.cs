@@ -2,6 +2,7 @@ using KanjiStudy.SRS.Models;
 using KanjiStudy.Web.Data;
 using Microsoft.AspNetCore.Components;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace KanjiStudy.Web.Pages
@@ -9,12 +10,19 @@ namespace KanjiStudy.Web.Pages
     public partial class CardList
     {
         [Inject]
-        public virtual LocalCardStore _localCardStore { get; set; }
-        public RTKItem[] items;
+        public virtual LocalCardStore LocalCardStore { get; set; }
+        private RTKItem[] _items;
+        private string _filterText = "";
 
         protected override async Task OnInitializedAsync()
         {
-            items = await _localCardStore.GetCardsAsync();
+            _items = await LocalCardStore.GetCardsAsync();
         }
+
+        RTKItem[] FilteredItems => _items != null ? _items
+            .Where(e => 
+            e.Kanji.ToLower().Contains(_filterText.ToLower()) ||
+            e.EnglishMeaning.ToLower().Contains(_filterText.ToLower()))
+            .ToArray() : _items;
     }
 }

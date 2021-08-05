@@ -7,33 +7,51 @@
 </div>
 
 
-@if (items == null)
+@if (_items == null || _items.Length == 0)
+
 {
-    <p><em>Loading...</em></p>
+    <div class="md:flex py-6">
+        <div class="w-full px-4 flex flex-col">
+            <h1 class="text-3xl mx-auto mt-5">No Cards</h1>
+            <h1 class="text-lg mt-2 mx-auto">Get Started by adding some new cards.</h1>
+             <NavLink href="add-card" class="mt-5 bg-indigo-600 text-white p-3 rounded-md mx-auto">Add a New Card</NavLink>
+        </div>
+    </div>
 }
 else
 {
     <div class="md:flex py-6">
         <div class="w-full px-4">
-            <div class="relative"> <input type="text" class="w-full h-12 shadow-md mb-3 rounded focus:outline-none px-3 focus:shadow-lg"
-                placeholder="Search..."> <i class="fa fa-search absolute right-3 top-4 text-gray-300"></i> </div>
-            <ul>
-                @foreach (var item in items)
-                {
-                    <li class="border-gray-400 flex flex-row mb-3">
-                        <div
-                    class="select-none cursor-pointer bg-gray-50 shadow-md rounded-md flex flex-1 items-center p-4  transition duration-500 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
-                            <div class="flex flex-col rounded-md text-4xl w-10 h-10 bg-gray-50 justify-center items-center mr-4">@item.Kanji
+            <div class="relative">
+                <input type="text" class="w-full h-12 shadow-md mb-3 rounded focus:outline-none px-3 focus:shadow-lg"
+                       placeholder="Search..." @bind-value="_filterText" @bind-value:event="oninput"/>
+                <i class="fa fa-search absolute right-3 top-4 text-gray-300"></i>
+            </div>
+            @if (FilteredItems.Length >=1)
+            {
+                <ul>
+                    @foreach (var item in FilteredItems)
+                    {
+                        <li class="border-gray-400 flex flex-row mb-3">
+                            <div
+                                class="select-none cursor-pointer bg-gray-50 shadow-md rounded-md flex flex-1 items-center p-4  transition duration-500 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
+                                <div class="flex flex-col rounded-md text-4xl w-10 h-10 bg-gray-50 justify-center items-center mr-4">
+                                    @item.Kanji
+                                </div>
+                                <div class="flex-1 pl-1 mr-16">
+                                    <div class="font-medium">@item.EnglishMeaning</div>
+                                    <div class="text-gray-600 text-sm">@item.Story</div>
+                                </div>
+                                <div class="text-gray-600 text-xs">Due: @item.ReviewDate</div>
                             </div>
-                            <div class="flex-1 pl-1 mr-16">
-                                <div class="font-medium">@item.EnglishMeaning</div>
-                                <div class="text-gray-600 text-sm">@item.Story</div>
-                            </div>
-                            <div class="text-gray-600 text-xs">Due: @item.ReviewDate</div>
-                        </div>
-                    </li>
-                }
-            </ul>
+                        </li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <h1>No Results Found</h1>
+            }
         </div>
     </div>
 }
