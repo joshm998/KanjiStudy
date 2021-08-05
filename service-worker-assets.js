@@ -217,7 +217,7 @@
       "url": "_framework\/KanjiStudy.SRS.dll"
     },
     {
-      "hash": "sha256-PrsVFzbFvo0qMFUEpALiSuxQrxZAx9qzqHgSYIXNnvg=",
+      "hash": "sha256-4KH9+HgmaqoFKy1UBsD+jlnBXmq9\/79cvw+\/5E23fxI=",
       "url": "_framework\/KanjiStudy.Web.dll"
     },
     {
@@ -317,7 +317,7 @@
       "url": "_framework\/System.Private.CoreLib.dll"
     },
     {
-      "hash": "sha256-I7DbDsnzLjRu8OoG19yoUFJk6ymto0iWcQHtLkWGy\/Y=",
+      "hash": "sha256-v6BjZ1B5TkasPWA1zj9pu9ALHxsPIOJGJStA1JnLvsc=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -325,5 +325,5 @@
       "url": "_framework\/blazor.webassembly.js"
     }
   ],
-  "version": "wGnbjGzW"
+  "version": "qPdbI9E2"
 };
