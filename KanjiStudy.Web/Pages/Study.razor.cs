@@ -10,29 +10,32 @@ namespace KanjiStudy.Web.Pages
     public partial class Study
     {
         [Inject]
-        public virtual LocalCardStore _localCardStore { get; set; }
+        public virtual LocalCardStore LocalCardStore { get; set; }
+        
+        [Inject]
+        public virtual StudySession Session { get; set; }
 
-        private bool sessionResult = false;
-        private bool flippedCard = false;
-        StudySession _session = new StudySession();
-        RTKItem currentItem;
+        private bool _sessionResult = false;
+        private bool _flippedCard = false;
+        RTKItem _currentItem;
         private async Task StartStudySession()
         {
-            var items = await _localCardStore.GetCardsAsync();
-            sessionResult = _session.StartStudySession(items);
-            currentItem = _session.GetNextItem();
+            var items = await LocalCardStore.GetCardsAsync();
+            _sessionResult = Session.StartStudySession(items);
+            _currentItem = Session.GetNextItem();
         }
         private async void ReviewItem(ReviewOutcome outcome)
         {
-            var reviewedItem = _session.ReviewItem(currentItem, outcome);
-            await _localCardStore.SaveCardAsync(reviewedItem);
-            currentItem = _session.GetNextItem();
-            flippedCard = false;
+            var reviewedItem = Session.ReviewItem(_currentItem, outcome);
+            await LocalCardStore.SaveCardAsync(reviewedItem);
+            _currentItem = Session.GetNextItem();
+            _flippedCard = false;
             StateHasChanged();
         }
         private void FlipCard()
         {
-            flippedCard = !flippedCard;
+            _flippedCard = !_flippedCard;
+            StateHasChanged();
         }
     }
 } 

@@ -4,38 +4,53 @@
 </div>
 
 <div class="m-4">
-    @if (!sessionResult)
+    @if (!_sessionResult)
     {
         <h2>Stats are a WIP</h2>
         <button class="w-full bg-indigo-600 text-white p-3 rounded-md" @onclick="StartStudySession">Start Study Session</button>
     }
     else
     {
-        @if (currentItem == null)
+        @if (_currentItem == null)
         {
             <h1>All Items Completed</h1>
         }
         else
         {
-            @if (!flippedCard)
-            {
-                <h2>@currentItem.EnglishMeaning</h2>
-                <button class="w-full bg-indigo-600 text-white p-3 rounded-md" @onclick="FlipCard">Flip Card</button>
-            }
+            <div class="border-gray-400 mb-3">
+                <div
+                    class="select-none bg-gray-50 shadow-md rounded-md flex flex-col flex-1 items-center p-4">
+                    @if (!_flippedCard)
+                    {
+                        <div class="text-gray-600 text-2xl m-auto">@_currentItem.EnglishMeaning</div>
+                    }
+                    else
+                    {
+                        <h2 class="text-gray-600 text-lg m-auto">#@_currentItem.Number</h2>
+                        <h2 class="text-gray-600 text-6xl m-auto">@_currentItem.Kanji</h2>
+                        <h2 class="text-gray-600 text-lg m-auto">@_currentItem.EnglishMeaning</h2>
+                        <h2 class="text-gray-600 text-lg m-auto">@_currentItem.Notes</h2>
+                        <h2 class="text-gray-600 text-lg m-auto">@_currentItem.NumberStrokes</h2>
+                        <h2 class="text-gray-600 text-lg m-auto">@_currentItem.Story</h2>
+                    }
+                </div>
 
+            </div>
+            
+            <div class="mt-2 mx-4">
+                <div class="bg-gray-300 rounded-full">
+                    <div class="w-8/12 mt-2 bg-indigo-600 py-2 text-center rounded-full"></div>
+                </div>
+                <div class="mx-2 text-xs">10/46 Complete</div>
+            </div>
+            
+            @if (!_flippedCard)
+            {
+                <button class="w-full bg-indigo-600 text-white p-3 rounded-md" @onclick="FlipCard">Flip Card</button>
+
+            }
             else
             {
-                <h1>Current Item</h1>
-                <h2>@currentItem.Kanji</h2>
-                <h2>@currentItem.Notes</h2>
-                <h2>@currentItem.Number</h2>
-                <h2>@currentItem.NumberStrokes</h2>
-                <h2>@currentItem.Story</h2>
-                <h2>@currentItem.ReviewDate</h2>
-                <h2>@currentItem.PreviousCorrectReview</h2>
-                <h2>@currentItem.CorrectReviewStreak</h2>
-                <h2>@currentItem.DifficultyRating.Percentage</h2>
-                <h2>@currentItem.EnglishMeaning</h2>
                 <div class="flex my-2">
                     <button class="w-full mr-1 bg-gray-500 text-white p-3 rounded-md" @onclick="() => ReviewItem(ReviewOutcome.NeverReviewed)">Unsure</button>
                     <button class="w-full mx-1 bg-red-500 text-white p-3 rounded-md" @onclick="() => ReviewItem(ReviewOutcome.Incorrect)">Again</button>
