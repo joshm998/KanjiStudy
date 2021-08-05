@@ -9,27 +9,29 @@ namespace KanjiStudy.Web.Pages
     public partial class AddCard
     {
         [Inject]
-        public virtual LocalCardStore _localCardStore { get; set; }
-        private CardModel cardModel = new();
-        private string test;
+        public virtual LocalCardStore LocalCardStore { get; set; }
+        [Inject]
+        public virtual NavigationManager NavManager { get; set; }
+        readonly CardModel _cardModel = new();
         private async Task HandleValidSubmit()
         {
-            var item1 = new RTKItem
+            var newItem = new RTKItem
             {
                 Id = Guid.NewGuid().ToString(),
-                Number = cardModel.Number,
-                NumberStrokes = cardModel.NumberStrokes,
-                EnglishMeaning = cardModel.EnglishMeaning,
-                Kanji = cardModel.Kanji,
-                Story = cardModel.Story,
-                Notes = cardModel.Notes,
+                Number = _cardModel.Number,
+                NumberStrokes = _cardModel.NumberStrokes,
+                EnglishMeaning = _cardModel.EnglishMeaning,
+                Kanji = _cardModel.Kanji,
+                Story = _cardModel.Story,
+                Notes = _cardModel.Notes,
                 CorrectReviewStreak = 0,
                 DifficultyRating = 100,
-                PreviousCorrectReview = System.DateTime.MinValue,
-                ReviewDate = System.DateTime.MinValue
+                PreviousCorrectReview = DateTime.MinValue,
+                ReviewDate = DateTime.MinValue
             };
 
-            await _localCardStore.SaveCardAsync(item1);
+            await LocalCardStore.SaveCardAsync(newItem);
+            NavManager.NavigateTo("/cards");
         }
     }
 }
