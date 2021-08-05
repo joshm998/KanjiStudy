@@ -1,42 +1,48 @@
-﻿@page "/study"
-@using SpacedRepetition.Net
-<h3>Study</h3>
-<h2>@sessionResult</h2>
-@if (!sessionResult)
-{
-	<button class="btn btn-primary" @onclick="StartStudySession">Start Study Session</button>
-}
-else
-{
-	@if (currentItem == null)
-	{
-		<h1>All Items Completed</h1>
-	}
-	else
-	{
-		@if (!flippedCard)
-		{
-			<h2>@currentItem.EnglishMeaning</h2>
-			<button class="btn btn-primary" @onclick="FlipCard">Flip Card</button>
-		}
+﻿@using SpacedRepetition.Net
+<div class="flex px-4">
+    <h1 class="text-4xl flex-1 ">Study</h1>
+</div>
 
-		else
-		{
-			<h1>Current Item</h1>
-			<h2>@currentItem.Kanji</h2>
-			<h2>@currentItem.Notes</h2>
-			<h2>@currentItem.Number</h2>
-			<h2>@currentItem.NumberStrokes</h2>
-			<h2>@currentItem.Story</h2>
-			<h2>@currentItem.ReviewDate</h2>
-			<h2>@currentItem.PreviousCorrectReview</h2>
-			<h2>@currentItem.CorrectReviewStreak</h2>
-			<h2>@currentItem.DifficultyRating.Percentage</h2>
-			<h2>@currentItem.EnglishMeaning</h2>
-			<button class="btn btn-primary" @onclick="() => ReviewItem(ReviewOutcome.NeverReviewed)">Unsure</button>
-			<button class="btn btn-primary" @onclick="() => ReviewItem(ReviewOutcome.Incorrect)">Again</button>
-			<button class="btn btn-primary" @onclick="() => ReviewItem(ReviewOutcome.Hesitant)">Hard</button>
-			<button class="btn btn-primary" @onclick="() => ReviewItem(ReviewOutcome.Perfect)">Perfect</button>
-		}
-	}
-}
+<div class="m-4">
+    @if (!sessionResult)
+    {
+        <h2>Stats are a WIP</h2>
+        <button class="w-full bg-indigo-600 text-white p-3 rounded-md" @onclick="StartStudySession">Start Study Session</button>
+    }
+    else
+    {
+        @if (currentItem == null)
+        {
+            <h1>All Items Completed</h1>
+        }
+        else
+        {
+            @if (!flippedCard)
+            {
+                <h2>@currentItem.EnglishMeaning</h2>
+                <button class="w-full bg-indigo-600 text-white p-3 rounded-md" @onclick="FlipCard">Flip Card</button>
+            }
+
+            else
+            {
+                <h1>Current Item</h1>
+                <h2>@currentItem.Kanji</h2>
+                <h2>@currentItem.Notes</h2>
+                <h2>@currentItem.Number</h2>
+                <h2>@currentItem.NumberStrokes</h2>
+                <h2>@currentItem.Story</h2>
+                <h2>@currentItem.ReviewDate</h2>
+                <h2>@currentItem.PreviousCorrectReview</h2>
+                <h2>@currentItem.CorrectReviewStreak</h2>
+                <h2>@currentItem.DifficultyRating.Percentage</h2>
+                <h2>@currentItem.EnglishMeaning</h2>
+                <div class="flex my-2">
+                    <button class="w-full mr-1 bg-gray-500 text-white p-3 rounded-md" @onclick="() => ReviewItem(ReviewOutcome.NeverReviewed)">Unsure</button>
+                    <button class="w-full mx-1 bg-red-500 text-white p-3 rounded-md" @onclick="() => ReviewItem(ReviewOutcome.Incorrect)">Again</button>
+                    <button class="w-full mx-1 bg-blue-500 text-white p-3 rounded-md" @onclick="() => ReviewItem(ReviewOutcome.Hesitant)">Hard</button>
+                    <button class="w-full ml-1 bg-green-500 text-white p-3 rounded-md" @onclick="() => ReviewItem(ReviewOutcome.Perfect)">Perfect</button>
+                </div>
+            }
+        }
+    }
+</div>
