@@ -1,64 +1,80 @@
 ﻿self.assetsManifest = {
   "assets": [
     {
-      "hash": "sha256-GGQZxH5G0WiJdP5tHUaI1yNPF5AROgwekzUmtSLJoEw=",
-      "url": "app.css"
-    },
-    {
-      "hash": "sha256-13FnRIXvDEP7iQlRVmDjxC\/siCPxS6r8Rn+UeZ6kUpg=",
-      "url": "app.min.css"
-    },
-    {
-      "hash": "sha256-SO\/fuIIWUxoIu1OABrOpK5n\/AvzxJcg+0H3PT1eutAE=",
+      "hash": "sha256-cd4LWmoKGdP75tZjv7uOe8\/vtTcnM3XOuWk+QVPx+jE=",
       "url": "css\/app.css"
     },
     {
-      "hash": "sha256-pdDdmoIu2wnUaehBAuzJKVrjDtyiklD1jx9nJwlLYCI=",
+      "hash": "sha256-h\/I1uivFuDukiyXCbOfenTf9UOq5b7QjV6NqyPrTaAM=",
       "url": "css\/app.min.css"
     },
     {
-      "hash": "sha256-YLGeXaapI0\/5IgZopewRJcFXomhRMlYYjugPLSyNjTY=",
-      "url": "css\/bootstrap\/bootstrap.min.css"
+      "hash": "sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=",
+      "url": "css\/font-awesome\/css\/fa.min.css"
     },
     {
-      "hash": "sha256-xMZ0SaSBYZSHVjFdZTAT\/IjRExRIxSriWcJLcA9nkj0=",
-      "url": "css\/bootstrap\/bootstrap.min.css.map"
+      "hash": "sha256-N7q2zVg5gujv9YUBqZ18XE1jZkwco0+eO3z1JsW3OuI=",
+      "url": "css\/font-awesome\/css\/fas.min.css"
     },
     {
-      "hash": "sha256-+Q44zfEaCMmXduni5Td+IgCbk8sSUQwES2nWs+KKQz0=",
-      "url": "css\/open-iconic\/FONT-LICENSE"
+      "hash": "sha256-QHqXI\/xxfJTih0lggNdz4Y4pw8rEniYwFyNDxlwIZKg=",
+      "url": "css\/font-awesome\/webfonts\/fa-brands-400.eot"
     },
     {
-      "hash": "sha256-BJ\/G+e+y7bQdrYkS2RBTyNfBHpA9IuGaPmf9htub5MQ=",
-      "url": "css\/open-iconic\/font\/css\/open-iconic-bootstrap.min.css"
+      "hash": "sha256-Z5taUha735E8wi1q5Ed4we+XXuOHpsTF3ofnXRmiIjI=",
+      "url": "css\/font-awesome\/webfonts\/fa-brands-400.svg"
     },
     {
-      "hash": "sha256-OK3poGPgzKI2NzNgP07XMbJa3Dz6USoUh\/chSkSvQpc=",
-      "url": "css\/open-iconic\/font\/fonts\/open-iconic.eot"
+      "hash": "sha256-BvTQCSPqJGl99d8LkphBdZkdi9JXdqAtUxu0AeOT7EI=",
+      "url": "css\/font-awesome\/webfonts\/fa-brands-400.ttf"
     },
     {
-      "hash": "sha256-sDUtuZAEzWZyv\/U1xl\/9D3ehyU69JE+FvAcu5HQ+\/a0=",
-      "url": "css\/open-iconic\/font\/fonts\/open-iconic.otf"
+      "hash": "sha256-r\/duXJhvKV1LxvgUKnjioxiIsQHC0CXbifecdfZP2Qs=",
+      "url": "css\/font-awesome\/webfonts\/fa-brands-400.woff"
     },
     {
-      "hash": "sha256-oUpLdS+SoLJFwf4bzA3iKD7TCm66oLkTpAQlVJ2s1wc=",
-      "url": "css\/open-iconic\/font\/fonts\/open-iconic.svg"
+      "hash": "sha256-Q8BywWye5tZ6zfpsbWaF\/x5060I3t8w8E0irHBCLJq8=",
+      "url": "css\/font-awesome\/webfonts\/fa-brands-400.woff2"
     },
     {
-      "hash": "sha256-p+RP8CV3vRK1YbIkNzq3rPo1jyETPnR07ULb+HVYL8w=",
-      "url": "css\/open-iconic\/font\/fonts\/open-iconic.ttf"
+      "hash": "sha256-z4P\/uM8AI71Dnf3V0C8ZVLbuAn6FiX1s\/F+Qu8qewdI=",
+      "url": "css\/font-awesome\/webfonts\/fa-regular-400.eot"
     },
     {
-      "hash": "sha256-cZPqVlRJfSNW0KaQ4+UPOXZ\/v\/QzXlejRDwUNdZIofI=",
-      "url": "css\/open-iconic\/font\/fonts\/open-iconic.woff"
+      "hash": "sha256-IyaEm2w9+iF6Dp7K7JVTyRCk4ph8hzFchQc9K5WkhPM=",
+      "url": "css\/font-awesome\/webfonts\/fa-regular-400.svg"
     },
     {
-      "hash": "sha256-s\/Is6Ey6jfNAEfXUIOyHrXXX+RcA8hzchYnuOIWUMl4=",
-      "url": "css\/open-iconic\/ICON-LICENSE"
+      "hash": "sha256-xlG4pn0xkyBvYiw8Ow+8pKLycnEIxCErUsHiouhMmzE=",
+      "url": "css\/font-awesome\/webfonts\/fa-regular-400.ttf"
     },
     {
-      "hash": "sha256-9wdNXQFE78LCNHo+Hq2eXMTx+YBf2gjsufVTJc8dAV0=",
-      "url": "css\/open-iconic\/README.md"
+      "hash": "sha256-FMnbT\/h\/3gj2ewpp3VlLq22HF0gSoNvTTFmDO\/7YzA4=",
+      "url": "css\/font-awesome\/webfonts\/fa-regular-400.woff"
+    },
+    {
+      "hash": "sha256-ivxuXoQrqrFgEMLOb89I7E3tjhV5o3wfG8An4SDQSVE=",
+      "url": "css\/font-awesome\/webfonts\/fa-regular-400.woff2"
+    },
+    {
+      "hash": "sha256-dadhFZriZsUzKk8mbgelVDcS\/7du4CYLB3ghlcBNw2Q=",
+      "url": "css\/font-awesome\/webfonts\/fa-solid-900.eot"
+    },
+    {
+      "hash": "sha256-+kmPsllqUjXFyG17aKf7526YVcAa9LDlq0HEEEfGSOA=",
+      "url": "css\/font-awesome\/webfonts\/fa-solid-900.svg"
+    },
+    {
+      "hash": "sha256-PQavHzHNg6znomWgFLj7Xe4Vdw7KyPelVVUZDmJ+A8I=",
+      "url": "css\/font-awesome\/webfonts\/fa-solid-900.ttf"
+    },
+    {
+      "hash": "sha256-dO3Bi2fEh+MvGBcZ\/bNH4udwIHRGUfRG6azXvWgh4uc=",
+      "url": "css\/font-awesome\/webfonts\/fa-solid-900.woff"
+    },
+    {
+      "hash": "sha256-0LQlar7XJIFYVmKXEmLqvuNFwZ+DevANfOJCOdO0Du8=",
+      "url": "css\/font-awesome\/webfonts\/fa-solid-900.woff2"
     },
     {
       "hash": "sha256-Jtxf9L+5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM=",
@@ -69,7 +85,7 @@
       "url": "icon-512.png"
     },
     {
-      "hash": "sha256-w4dogzcTb\/TZRBsAyEL5dWt34rQk6lxivo+szs9zw\/4=",
+      "hash": "sha256-kH+PXozFxgJJT4IpfskJjJItmeI+rmCFt6XXdaz03r0=",
       "url": "index.html"
     },
     {
@@ -85,15 +101,11 @@
       "url": "manifest.json"
     },
     {
-      "hash": "sha256-4Yh4OTT5TEAPNyXEzOG+n5l2HPK294WFItz4SIelj88=",
-      "url": "sample-data\/weather.json"
-    },
-    {
       "hash": "sha256-CxVdUmyTEta+2xLHU2f2jggwsnR5Qg6O3\/HGEmJhtek=",
       "url": "_framework\/package-lock.json"
     },
     {
-      "hash": "sha256-QUGQh0cb4+Vgc1S7xQzfaYdUWyPvcXEB+Qaun5tCTX4=",
+      "hash": "sha256-bCXJSCYwuFmlESjxmCDZ4\/VUz3E+m44FV\/6JaJbP5gc=",
       "url": "_framework\/package.json"
     },
     {
@@ -123,10 +135,6 @@
     {
       "hash": "sha256-cUOztblhuGlkjvgM72ql0e2NRuVqwW32qti8huxzYXs=",
       "url": "_framework\/dotnet.5.0.8.js"
-    },
-    {
-      "hash": "sha256-KDnf29CWdn90bRTS1AP4Cq06p5041NTk5dljpwZz5YI=",
-      "url": "KanjiStudy.Web.styles.css"
     },
     {
       "hash": "sha256-rmy85RB+Wa4Z6+oUHGAFmMAAhZgdwnVrHQlcIiMrzAc=",
@@ -209,7 +217,7 @@
       "url": "_framework\/KanjiStudy.SRS.dll"
     },
     {
-      "hash": "sha256-rIl1POpaTLTrfzD8N2Tf16PzAnuMMwDyHhAtqbAF3bc=",
+      "hash": "sha256-PrsVFzbFvo0qMFUEpALiSuxQrxZAx9qzqHgSYIXNnvg=",
       "url": "_framework\/KanjiStudy.Web.dll"
     },
     {
@@ -305,11 +313,11 @@
       "url": "_framework\/System.Text.RegularExpressions.dll"
     },
     {
-      "hash": "sha256-s9N4gKZ3N7+lN3Mw2dKWBhg7ZsyMkiqzF+MQphEcJq0=",
+      "hash": "sha256-5a5IvvWf6+K9RxX6uCtoJyTFP7Qb56lcUsXnY1tVWvY=",
       "url": "_framework\/System.Private.CoreLib.dll"
     },
     {
-      "hash": "sha256-9qcGeOi+RJBfIG+6+Nq1jXAHlSNw+1YEOGbkjJ6gVpI=",
+      "hash": "sha256-I7DbDsnzLjRu8OoG19yoUFJk6ymto0iWcQHtLkWGy\/Y=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -317,5 +325,5 @@
       "url": "_framework\/blazor.webassembly.js"
     }
   ],
-  "version": "9B58dNMW"
+  "version": "wGnbjGzW"
 };
