@@ -1,17 +1,14 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="page">
-    <div class="sidebar">
+  <div class="bg-gray-100 font-sans leading-normal tracking-normal">
+    <div class="flex md:flex-row-reverse flex-wrap h-screen md:h-auto">
+      <div class="w-full md:flex-1 bg-gray-100">
+        <div class="container bg-gray-100 pt-16 px-6 max-w-6xl mx-auto">
+          @Body
+        </div>
+      </div>
         <NavMenu />
-    </div>
+  </div>
 
-    <div class="main">
-        <div class="top-row px-4">
-            <a href="http://blazor.net" target="_blank" class="ml-md-auto">About</a>
-        </div>
 
-        <div class="content px-4">
-            @Body
-        </div>
-    </div>
 </div>
