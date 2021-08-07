@@ -10,11 +10,15 @@ namespace KanjiStudy.SRS
     {
         private StudySession<RTKItem> _studySession;
         private List<RTKItem> _itemQueue;
-        public bool StartStudySession(SessionConfig config, IEnumerable<RTKItem> items)
+        public StudyStats SessionStats;
+        public bool StartStudySession(SessionConfig config, IEnumerable<RTKItem> items, StudyStats stats)
         {
-            _studySession = new StudySession<RTKItem>(items);
-            _studySession.MaxExistingCards = config.MaxExistingCards;
-            _studySession.MaxNewCards = config.MaxNewCards;
+            _studySession = new StudySession<RTKItem>(items)
+            {
+                MaxExistingCards = config.MaxExistingCards,
+                MaxNewCards = config.MaxNewCards
+            };
+            SessionStats = stats;
             _itemQueue = items.ToList();
             return true;
         }
@@ -33,6 +37,22 @@ namespace KanjiStudy.SRS
             item.PreviousCorrectReview = reviewItem.PreviousCorrectReview;
             item.CorrectReviewStreak = reviewItem.CorrectReviewStreak;
             item.DifficultyRating = reviewItem.DifficultyRating;
+            SessionStats.CardsAnswered++;
+            switch (outcome)
+            {
+                case ReviewOutcome.Hesitant:
+                    SessionStats.HesitantAnswers++;
+                    break;
+                case ReviewOutcome.Incorrect:
+                    SessionStats.IncorrectAnswers++;
+                    break;
+                case ReviewOutcome.Perfect:
+                    SessionStats.PerfectAnswers++;
+                    break;
+                case ReviewOutcome.NeverReviewed:
+                    SessionStats.NeverReviewedAnswers++;
+                    break;
+            }
             return item;
         }
 

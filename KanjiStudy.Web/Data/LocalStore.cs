@@ -7,27 +7,34 @@ using System.Threading.Tasks;
 
 namespace KanjiStudy.Web.Data
 {
-    public class LocalCardStore
+    public class LocalStore
     {
         private readonly IJSRuntime js;
-        public LocalCardStore(IJSRuntime js)
+        public LocalStore(IJSRuntime js)
         {
             this.js = js;
         }
 
         public ValueTask<RTKItem[]> GetCardsAsync()
         {
-            return js.InvokeAsync<RTKItem[]>(
-                "localCardStore.getAll", "cardstore");
+            return GetAllAsync<RTKItem>("cardstore");
         }
-
-        public ValueTask UpdateCardAsync(RTKItem card, string id)
-            => PutAsync("cardstore", id, card);
 
         public ValueTask SaveCardAsync(RTKItem card)
             => PutAsync("cardstore", null, card);
+        
+        public ValueTask<StudyStats[]> GetStatsAsync()
+        {
+            return GetAllAsync<StudyStats>("statstore");
+        }
+        
+        public ValueTask SaveStatsAsync(StudyStats stats)
+            => PutAsync("statstore", null, stats);
 
         ValueTask PutAsync<T>(string storeName, object key, T value)
             => js.InvokeVoidAsync("localCardStore.put", storeName, key, value);
+        
+        ValueTask<T[]> GetAllAsync<T>(string storeName)
+            => js.InvokeAsync<T[]>("localCardStore.getAll", storeName);
     }
 }

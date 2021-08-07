@@ -9,7 +9,7 @@ namespace KanjiStudy.Web.Pages
     public partial class AddCard
     {
         [Inject]
-        public virtual LocalCardStore LocalCardStore { get; set; }
+        public virtual LocalStore LocalStore { get; set; }
         [Inject]
         public virtual NavigationManager NavManager { get; set; }
         readonly CardModel _cardModel = new();
@@ -30,7 +30,7 @@ namespace KanjiStudy.Web.Pages
                 ReviewDate = DateTime.MinValue
             };
 
-            await LocalCardStore.SaveCardAsync(newItem);
+            await LocalStore.SaveCardAsync(newItem);
             NavManager.NavigateTo("/cards");
         }
     }

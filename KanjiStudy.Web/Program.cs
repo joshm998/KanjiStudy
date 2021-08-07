@@ -24,7 +24,7 @@ namespace KanjiStudy.Web
 
             builder.Services.AddBlazoredLocalStorage();
             builder.Services.AddScoped<StudyConfig>();
-            builder.Services.AddScoped<LocalCardStore>();
+            builder.Services.AddScoped<LocalStore>();
             builder.Services.AddScoped<StudySession>();
             await builder.Build().RunAsync();
         }

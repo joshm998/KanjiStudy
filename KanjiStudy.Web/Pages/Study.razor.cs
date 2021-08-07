@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using KanjiStudy.SRS;
 using KanjiStudy.SRS.Models;
 using KanjiStudy.Web.Data;
@@ -10,7 +12,7 @@ namespace KanjiStudy.Web.Pages
     public partial class Study
     {
         [Inject]
-        private LocalCardStore LocalCardStore { get; set; }
+        private LocalStore LocalStore { get; set; }
         [Inject]
         private StudySession Session { get; set; }
         [Inject]
@@ -22,15 +24,31 @@ namespace KanjiStudy.Web.Pages
         
         private async Task StartStudySession()
         {
-            var items = await LocalCardStore.GetCardsAsync();
-            _sessionResult = Session.StartStudySession(StudyConfig.Settings, items);
+            var items = await LocalStore.GetCardsAsync();
+            var stats = await LocalStore.GetStatsAsync();
+            var e = stats.FirstOrDefault();
+            if (e == null)
+            {
+                e = new StudyStats()
+                {
+                    Date = DateTime.UtcNow.Date,
+                    CardsAnswered = 0,
+                    IncorrectAnswers = 0,
+                    PerfectAnswers = 0,
+                    HesitantAnswers = 0,
+                    NeverReviewedAnswers = 0
+                };
+            }
+            
+            _sessionResult = Session.StartStudySession(StudyConfig.Settings, items, e);
             _currentItem = Session.GetNextItem();
         }
         private async void ReviewItem(ReviewOutcome outcome)
         {
             var reviewedItem = Session.ReviewItem(_currentItem, outcome);
-            await LocalCardStore.SaveCardAsync(reviewedItem);
+            await LocalStore.SaveCardAsync(reviewedItem);
             _currentItem = Session.GetNextItem();
+            await LocalStore.SaveStatsAsync(Session.SessionStats);
             _flippedCard = false;
             StateHasChanged();
         }
