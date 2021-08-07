@@ -10,18 +10,20 @@ namespace KanjiStudy.Web.Pages
     public partial class Study
     {
         [Inject]
-        public virtual LocalCardStore LocalCardStore { get; set; }
-        
+        private LocalCardStore LocalCardStore { get; set; }
         [Inject]
-        public virtual StudySession Session { get; set; }
-
+        private StudySession Session { get; set; }
+        [Inject]
+        private StudyConfig StudyConfig { get; set; }
+        
         private bool _sessionResult = false;
         private bool _flippedCard = false;
         RTKItem _currentItem;
+        
         private async Task StartStudySession()
         {
             var items = await LocalCardStore.GetCardsAsync();
-            _sessionResult = Session.StartStudySession(items);
+            _sessionResult = Session.StartStudySession(StudyConfig.Settings, items);
             _currentItem = Session.GetNextItem();
         }
         private async void ReviewItem(ReviewOutcome outcome)

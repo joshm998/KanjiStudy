@@ -10,9 +10,11 @@ namespace KanjiStudy.SRS
     {
         private StudySession<RTKItem> _studySession;
         private List<RTKItem> _itemQueue;
-        public bool StartStudySession(IEnumerable<RTKItem> items)
+        public bool StartStudySession(SessionConfig config, IEnumerable<RTKItem> items)
         {
             _studySession = new StudySession<RTKItem>(items);
+            _studySession.MaxExistingCards = config.MaxExistingCards;
+            _studySession.MaxNewCards = config.MaxNewCards;
             _itemQueue = items.ToList();
             return true;
         }
