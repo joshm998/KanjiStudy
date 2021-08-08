@@ -6,6 +6,7 @@ using KanjiStudy.Web.Data;
 using Microsoft.AspNetCore.Components;
 using SpacedRepetition.Net;
 using System.Threading.Tasks;
+using KanjiStudy.Web.Helpers;
 
 namespace KanjiStudy.Web.Pages
 {
@@ -20,16 +21,18 @@ namespace KanjiStudy.Web.Pages
         
         private bool _sessionResult = false;
         private bool _flippedCard = false;
+        private string _canvasData = "";
+        private string _sidebarStyle = "width: 0%;";
         RTKItem _currentItem;
         
         private async Task StartStudySession()
         {
             var items = await LocalStore.GetCardsAsync();
             var stats = await LocalStore.GetStatsAsync();
-            var e = stats.FirstOrDefault();
-            if (e == null)
+            var todayStats = stats.FirstOrDefault();
+            if (todayStats == null)
             {
-                e = new StudyStats()
+                todayStats = new StudyStats()
                 {
                     Date = DateTime.UtcNow.Date,
                     CardsAnswered = 0,
@@ -40,7 +43,7 @@ namespace KanjiStudy.Web.Pages
                 };
             }
             
-            _sessionResult = Session.StartStudySession(StudyConfig.Settings, items, e);
+            _sessionResult = Session.StartStudySession(StudyConfig.Settings, items, todayStats);
             _currentItem = Session.GetNextItem();
         }
         private async void ReviewItem(ReviewOutcome outcome)
@@ -48,6 +51,7 @@ namespace KanjiStudy.Web.Pages
             var reviewedItem = Session.ReviewItem(_currentItem, outcome);
             await LocalStore.SaveCardAsync(reviewedItem);
             _currentItem = Session.GetNextItem();
+            _sidebarStyle = $"width: {Session.PercentComplete}%";
             await LocalStore.SaveStatsAsync(Session.SessionStats);
             _flippedCard = false;
             StateHasChanged();
@@ -56,6 +60,11 @@ namespace KanjiStudy.Web.Pages
         {
             _flippedCard = !_flippedCard;
             StateHasChanged();
+        }
+
+        private void CanvasValueChanged(string value)
+        {
+            _canvasData = value;
         }
     }
 } 
