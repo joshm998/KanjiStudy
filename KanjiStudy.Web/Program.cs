@@ -27,6 +27,7 @@ namespace KanjiStudy.Web
             builder.Services.AddScoped<StudyConfig>();
             builder.Services.AddScoped<LocalStore>();
             builder.Services.AddScoped<CanvasHelper>();
+            builder.Services.AddScoped<RtkImportHelper>();
             builder.Services.AddScoped<StudySession>();
             await builder.Build().RunAsync();
         }
