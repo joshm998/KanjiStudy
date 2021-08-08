@@ -2,6 +2,7 @@
 using KanjiStudy.Web.Data;
 using Microsoft.AspNetCore.Components;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace KanjiStudy.Web.Pages
@@ -9,12 +10,14 @@ namespace KanjiStudy.Web.Pages
     public partial class Stats
     {
         [Inject]
-        public virtual LocalCardStore _localCardStore { get; set; }
-        public RTKItem[] stats;
+        public virtual LocalStore LocalStore { get; set; }
+        private StudyStats[] _stats;
+        public StudyStats _selectedStats;
 
         protected override async Task OnInitializedAsync()
         {
-            stats = await _localCardStore.GetCardsAsync();
+            _stats = await LocalStore.GetStatsAsync();
+            _selectedStats = _stats.FirstOrDefault();
         }
     }
 }

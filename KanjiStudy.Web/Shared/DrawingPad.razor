@@ -1,0 +1,33 @@
+﻿@using KanjiStudy.Web.Helpers
+@inject CanvasHelper _canvas
+
+<div class="my-10 flex flex-col">
+    <canvas @onclick="GetCanvasContent" id="paint" class="shadow-lg mx-auto rounded-md border-2"> </canvas>
+    <button @onclick="ClearCanvas" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded mx-auto mt-2 ">
+        <span>Clear</span>
+    </button>
+
+</div>
+
+@code {
+    [Parameter] public EventCallback<string> CanvasValue { get; set; }
+
+    protected override Task OnAfterRenderAsync(bool firstRender)
+    {
+        if(firstRender) 
+            _canvas.CreateCanvasElement("paint");
+        return base.OnAfterRenderAsync(firstRender);
+    }
+
+    private void ClearCanvas()
+    {
+        _canvas.ClearCanvasElement("paint");
+    }
+
+    private async void GetCanvasContent()
+    {
+        var value = await _canvas.GetCanvasValue("paint");
+        await CanvasValue.InvokeAsync(value);
+    }
+
+}

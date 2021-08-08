@@ -9,12 +9,26 @@ namespace KanjiStudy.Web.Pages
     public partial class Settings
     {
         [Inject]
-        public virtual LocalCardStore _localCardStore { get; set; }
-        public RTKItem[] settings;
+        private StudyConfig StudyConfig { get; set; }
+        
+        [Inject]
+        private NavigationManager NavManager { get; set; }
+
+        private SessionConfig _settingsModel = new();
+        private void HandleValidSubmit()
+        {
+            var settings = new SessionConfig()
+            {
+                MaxExistingCards = _settingsModel.MaxExistingCards,
+                MaxNewCards = _settingsModel.MaxNewCards
+            };
+
+            StudyConfig.SaveSettings(settings);
+        }
 
         protected override async Task OnInitializedAsync()
         {
-            settings = await _localCardStore.GetCardsAsync();
+            _settingsModel = StudyConfig.Settings;
         }
     }
 }

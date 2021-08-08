@@ -1,0 +1,17 @@
+﻿@inject IJSRuntime _js
+
+<div id="stroke-order"></div>
+
+@code {
+
+    [Parameter]
+    public string StrokeValue { get; set; }
+
+    protected override Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+            _js.InvokeVoidAsync("generateStrokeOrder", "stroke-order", StrokeValue);
+        return base.OnAfterRenderAsync(firstRender);
+    }
+
+}

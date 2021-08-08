@@ -9,7 +9,7 @@ namespace KanjiStudy.Web.Data
     public class CardModel
     {
         [Required(ErrorMessage = "Please Enter Number")]
-        public int Number { get; set; }
+        public string Number { get; set; }
 
         [Required(ErrorMessage = "Please Enter Number of Strokes")]
         public int NumberStrokes { get; set; }

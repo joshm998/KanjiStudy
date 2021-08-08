@@ -8,7 +8,9 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Blazored.LocalStorage;
 using KanjiStudy.SRS;
+using KanjiStudy.Web.Helpers;
 
 namespace KanjiStudy.Web
 {
@@ -21,7 +23,11 @@ namespace KanjiStudy.Web
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
-            builder.Services.AddScoped<LocalCardStore>();
+            builder.Services.AddBlazoredLocalStorage();
+            builder.Services.AddScoped<StudyConfig>();
+            builder.Services.AddScoped<LocalStore>();
+            builder.Services.AddScoped<CanvasHelper>();
+            builder.Services.AddScoped<RtkImportHelper>();
             builder.Services.AddScoped<StudySession>();
             await builder.Build().RunAsync();
         }

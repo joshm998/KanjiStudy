@@ -12,16 +12,16 @@
         <div class="relative p-8 bg-white shadow-sm sm:rounded-xl">
             <EditForm Model="@_cardModel" OnValidSubmit="@HandleValidSubmit" class="w-full mx-auto">
                 <div class="mb-5 relative">
+                    <input type="text" id="notes" class="peer pt-8 border border-gray-200 focus:outline-none rounded-md focus:border-gray-500 focus:shadow-sm w-full p-3 h-16 placeholder-transparent" placeholder="test" @onchange="OnNumberChange"/>
+                    <label for="notes" class="peer-placeholder-shown:opacity-100 opacity-75 peer-focus:opacity-75 peer-placeholder-shown:scale-100 scale-75 peer-focus:scale-75 peer-placeholder-shown:translate-y-0 -translate-y-3 peer-focus:-translate-y-3 peer-placeholder-shown:translate-x-0 translate-x-1 peer-focus:translate-x-1 absolute top-0 left-0 px-3 py-5 h-full pointer-events-none transform origin-left transition-all duration-100 ease-in-out"> RTK Number </label>
+                </div>
+                <div class="mb-5 relative">
                     <InputText type="text" id="notes" class="peer pt-8 border border-gray-200 focus:outline-none rounded-md focus:border-gray-500 focus:shadow-sm w-full p-3 h-16 placeholder-transparent" placeholder="a" @bind-Value="_cardModel.EnglishMeaning"/>
                     <label for="notes" class="peer-placeholder-shown:opacity-100 opacity-75 peer-focus:opacity-75 peer-placeholder-shown:scale-100 scale-75 peer-focus:scale-75 peer-placeholder-shown:translate-y-0 -translate-y-3 peer-focus:-translate-y-3 peer-placeholder-shown:translate-x-0 translate-x-1 peer-focus:translate-x-1 absolute top-0 left-0 px-3 py-5 h-full pointer-events-none transform origin-left transition-all duration-100 ease-in-out"> English Meaning </label>
                 </div>
                 <div class="mb-5 relative">
                     <InputText type="text" id="notes" class="peer pt-8 border border-gray-200 focus:outline-none rounded-md focus:border-gray-500 focus:shadow-sm w-full p-3 h-16 placeholder-transparent" placeholder="a" @bind-Value="_cardModel.Kanji"/>
                     <label for="notes" class="peer-placeholder-shown:opacity-100 opacity-75 peer-focus:opacity-75 peer-placeholder-shown:scale-100 scale-75 peer-focus:scale-75 peer-placeholder-shown:translate-y-0 -translate-y-3 peer-focus:-translate-y-3 peer-placeholder-shown:translate-x-0 translate-x-1 peer-focus:translate-x-1 absolute top-0 left-0 px-3 py-5 h-full pointer-events-none transform origin-left transition-all duration-100 ease-in-out"> Kanji </label>
-                </div>
-                <div class="mb-5 relative">
-                    <InputNumber type="text" id="notes" class="peer pt-8 border border-gray-200 focus:outline-none rounded-md focus:border-gray-500 focus:shadow-sm w-full p-3 h-16 placeholder-transparent" placeholder="test" @bind-Value="_cardModel.Number"/>
-                    <label for="notes" class="peer-placeholder-shown:opacity-100 opacity-75 peer-focus:opacity-75 peer-placeholder-shown:scale-100 scale-75 peer-focus:scale-75 peer-placeholder-shown:translate-y-0 -translate-y-3 peer-focus:-translate-y-3 peer-placeholder-shown:translate-x-0 translate-x-1 peer-focus:translate-x-1 absolute top-0 left-0 px-3 py-5 h-full pointer-events-none transform origin-left transition-all duration-100 ease-in-out"> RTK Number </label>
                 </div>
                 <div class="mb-5 relative">
                     <InputNumber type="text" id="notes" class="peer pt-8 border border-gray-200 focus:outline-none rounded-md focus:border-gray-500 focus:shadow-sm w-full p-3 h-16 placeholder-transparent" placeholder="a" @bind-Value="_cardModel.NumberStrokes"/>
@@ -46,77 +46,3 @@
         </div>
     </div>
 </div>
-
-
-@* <div class="md:flex md:items-center mb-12"> *@
-@*     <div class="md:w-1/3 md:w-64"> *@
-@*         <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="englishMeaning"> *@
-@*             English *@
-@*         </label> *@
-@*     </div> *@
-@*     <div class="md:w-2/3 md:w-64"> *@
-@*         <InputText *@
-@*             class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" *@
-@*             id="englishMeaning" @bind-Value="_cardModel.EnglishMeaning"/> *@
-@*     </div> *@
-@* </div> *@
-@* <div class="md:flex md:items-center mb-12"> *@
-@*     <div class="md:w-1/3"> *@
-@*         <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="strokeNumber"> *@
-@*             Number of Strokes *@
-@*         </label> *@
-@*     </div> *@
-@*     <div class="md:w-2/3"> *@
-@*         <InputNumber class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="englishMeaning" @bind-Value="_cardModel.NumberStrokes"/> *@
-@*     </div> *@
-@* </div> *@
-@* <div class="md:flex md:items-center mb-12"> *@
-@*     <div class="md:w-1/3"> *@
-@*         <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="number"> *@
-@*             RTK Number *@
-@*         </label> *@
-@*     </div> *@
-@*     <div class="md:w-2/3"> *@
-@*         <InputNumber class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="englishMeaning" @bind-Value="_cardModel.Number"/> *@
-@*     </div> *@
-@* </div> *@
-@* <div class="md:flex md:items-center mb-12"> *@
-@*     <div class="md:w-1/3"> *@
-@*         <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="kanji"> *@
-@*             Kanji *@
-@*         </label> *@
-@*     </div> *@
-@*     <div class="md:w-2/3"> *@
-@*         <InputText class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="englishMeaning" @bind-Value="_cardModel.Kanji"/> *@
-@*     </div> *@
-@* </div> *@
-@* <div class="md:flex md:items-center mb-12"> *@
-@*     <div class="md:w-1/3"> *@
-@*         <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="story"> *@
-@*             Story *@
-@*         </label> *@
-@*     </div> *@
-@*     <div class="md:w-2/3"> *@
-@*         <InputText class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="story" @bind-Value="_cardModel.Story"/> *@
-@*     </div> *@
-@* </div> *@
-@* <div class="md:flex md:items-center mb-12"> *@
-@*     <div class="md:w-1/3"> *@
-@*         <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="notes"> *@
-@*             Notes *@
-@*         </label> *@
-@*     </div> *@
-@*     <div class="md:w-2/3"> *@
-@*         <InputText class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="notes" @bind-Value="_cardModel.Notes"/> *@
-@*     </div> *@
-@* </div> *@
-@* <div class="md:flex md:items-center"> *@
-@*     <div class="md:w-1/3"></div> *@
-@*     <div class="md:w-2/3"> *@
-@*         <button *@
-@*             class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" *@
-@*             type="submit"> *@
-@*             Add Card *@
-@*         </button> *@
-@*     </div> *@
-@* </div> *@

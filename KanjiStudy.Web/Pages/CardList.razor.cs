@@ -10,13 +10,13 @@ namespace KanjiStudy.Web.Pages
     public partial class CardList
     {
         [Inject]
-        public virtual LocalCardStore LocalCardStore { get; set; }
+        public virtual LocalStore LocalStore { get; set; }
         private RTKItem[] _items;
         private string _filterText = "";
 
         protected override async Task OnInitializedAsync()
         {
-            _items = await LocalCardStore.GetCardsAsync();
+            _items = await LocalStore.GetCardsAsync();
         }
 
         RTKItem[] FilteredItems => _items != null ? _items

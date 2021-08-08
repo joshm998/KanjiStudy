@@ -23,31 +23,53 @@
                     @if (!_flippedCard)
                     {
                         <div class="text-gray-600 text-2xl m-auto">@_currentItem.EnglishMeaning</div>
+                        <DrawingPad CanvasValue="CanvasValueChanged"/>
                     }
                     else
                     {
-                        <h2 class="text-gray-600 text-lg m-auto">#@_currentItem.Number</h2>
-                        <h2 class="text-gray-600 text-6xl m-auto">@_currentItem.Kanji</h2>
-                        <h2 class="text-gray-600 text-lg m-auto">@_currentItem.EnglishMeaning</h2>
-                        <h2 class="text-gray-600 text-lg m-auto">@_currentItem.Notes</h2>
-                        <h2 class="text-gray-600 text-lg m-auto">@_currentItem.NumberStrokes</h2>
-                        <h2 class="text-gray-600 text-lg m-auto">@_currentItem.Story</h2>
+                        <h2 class="text-gray-600 text-lg m-auto">
+                            <b>RTK No:</b> @_currentItem.Number
+                        </h2>
+                        <h2 class="text-gray-600 text-6xl mt-2 m-auto">@_currentItem.Kanji</h2>
+                        <h2 class="text-gray-600 text-2xl mt-2 m-auto">@_currentItem.EnglishMeaning</h2>
+                        <h2 class="text-gray-600 text-lg m-auto">
+                            <b>Story:</b> @_currentItem.Story
+                        </h2>
+                        <h2 class="text-gray-600 text-lg m-auto">
+                            <b>Strokes:</b> @_currentItem.NumberStrokes
+                        </h2>
+                        @if (!String.IsNullOrEmpty(_currentItem.Notes))
+                        {
+                            <h2 class="text-gray-600 text-lg m-auto">
+                                <b>Notes:</b> @_currentItem.Notes
+                            </h2>
+                        }
+                        <h2 class="text-gray-600 text-lg mt-2 m-auto">
+                            <b>Stroke Order</b>
+                        </h2>
+                        <StrokeOrder StrokeValue="@_currentItem.Kanji"/>
+                        @if (!String.IsNullOrEmpty(_canvasData))
+                        {
+                            <h2 class="text-gray-600 text-lg mt-2 m-auto">
+                                <b>Your Try</b>
+                            </h2>
+                            <img src="@_canvasData" class="shadow-lg mx-auto rounded-md border-2 w-2/5" alt="drawn image"/>
+                        }
                     }
                 </div>
 
             </div>
-            
+
             <div class="mt-2 mx-4">
                 <div class="bg-gray-300 rounded-full">
-                    <div class="w-8/12 mt-2 bg-indigo-600 py-2 text-center rounded-full"></div>
+                    <div class="mt-2 bg-indigo-600 py-2 text-center rounded-full" style=@_sidebarStyle></div>
                 </div>
-                <div class="mx-2 text-xs">10/46 Complete</div>
+                <div class="mx-2 text-xs">@Session.CardsAnswered/@Session.CardCount Complete</div>
             </div>
-            
+
             @if (!_flippedCard)
             {
                 <button class="w-full bg-indigo-600 text-white p-3 rounded-md" @onclick="FlipCard">Flip Card</button>
-
             }
             else
             {
