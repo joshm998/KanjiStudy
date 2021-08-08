@@ -2,8 +2,8 @@
 
     const db = idb.openDB('Cards', 1, {
         upgrade(db) {
-            db.createObjectStore('metadata');
             db.createObjectStore('cardstore', { keyPath: 'id' }).createIndex('lastUpdated', 'lastUpdated');
+            db.createObjectStore('statstore', { keyPath: 'date' }).createIndex('lastUpdated', 'lastUpdated');
         },
     });
 
