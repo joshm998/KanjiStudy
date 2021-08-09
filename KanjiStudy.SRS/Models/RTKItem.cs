@@ -9,7 +9,7 @@ namespace KanjiStudy.SRS.Models
 {
     public class RTKItem : ReviewItem
     {
-        public string Id { get; set; }
+        public string _id { get; set; }
         public string Number { get; set; }
         public int NumberStrokes { get; set; }
         public string EnglishMeaning { get; set; }

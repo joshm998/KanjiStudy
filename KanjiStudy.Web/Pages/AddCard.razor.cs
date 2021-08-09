@@ -20,7 +20,7 @@ namespace KanjiStudy.Web.Pages
         {
             var newItem = new RTKItem
             {
-                Id = Guid.NewGuid().ToString(),
+                _id = Guid.NewGuid().ToString(),
                 Number = _cardModel.Number,
                 NumberStrokes = _cardModel.NumberStrokes,
                 EnglishMeaning = _cardModel.EnglishMeaning,
