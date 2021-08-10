@@ -2,6 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
+
+.spinner{
+    margin: auto;
+    width: 64px;
+    height: 64px;
+    border: 8px solid;
+    border-color: #3d5af1 transparent #3d5af1 transparent;
+    border-radius: 50%;
+    animation: spin 1.2s linear infinite;
+}
+
+.loading {
+    height: 100vh;
+    display: flex;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 .active i {
     @apply text-pink-500;
 }
