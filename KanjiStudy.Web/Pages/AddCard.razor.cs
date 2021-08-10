@@ -1,4 +1,4 @@
-using KanjiStudy.SRS.Models;
+using KanjiStudy.Core.Models;
 using KanjiStudy.Web.Data;
 using Microsoft.AspNetCore.Components;
 using System;
@@ -33,7 +33,7 @@ namespace KanjiStudy.Web.Pages
                 ReviewDate = DateTime.MinValue
             };
 
-            await LocalStore.SaveCardAsync(newItem);
+            await LocalStore.AddCardAsync(newItem);
             NavManager.NavigateTo("/cards");
         }
 

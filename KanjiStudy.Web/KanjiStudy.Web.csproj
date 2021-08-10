@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\KanjiStudy.SRS\KanjiStudy.SRS.csproj" />
+    <ProjectReference Include="..\KanjiStudy.Core\KanjiStudy.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

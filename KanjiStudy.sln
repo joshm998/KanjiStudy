@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.31521.260
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KanjiStudy.Web", "KanjiStudy.Web\KanjiStudy.Web.csproj", "{673F188F-748B-4007-A4D1-DD1503B2D9CB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KanjiStudy.SRS", "KanjiStudy.SRS\KanjiStudy.SRS.csproj", "{A6437C3B-8B97-4C21-B2FB-BC47F80DEFAC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KanjiStudy.Core", "KanjiStudy.Core\KanjiStudy.Core.csproj", "{A6437C3B-8B97-4C21-B2FB-BC47F80DEFAC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

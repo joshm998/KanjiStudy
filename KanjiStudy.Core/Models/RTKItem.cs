@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KanjiStudy.SRS.Models
+namespace KanjiStudy.Core.Models
 {
     public class RTKItem : ReviewItem
     {

@@ -1,4 +1,4 @@
-﻿using KanjiStudy.SRS.Models;
+﻿using KanjiStudy.Core.Models;
 using Microsoft.JSInterop;
 using System;
 using System.Collections.Generic;
@@ -21,16 +21,21 @@ namespace KanjiStudy.Web.Data
             return GetAllAsync<RTKItem>("card");
         }
 
-        public ValueTask SaveCardAsync(RTKItem card)
+        public ValueTask AddCardAsync(RTKItem card)
             => AddAsync("card", card);
+        
+        public ValueTask UpdateCardAsync(RTKItem card)
+            => UpdateAsync(card);
         
         public ValueTask<StudyStats[]> GetStatsAsync()
         {
             return GetAllAsync<StudyStats>("stat");
         }
         
-        public ValueTask SaveStatsAsync(StudyStats stats)
+        public ValueTask AddStatsAsync(StudyStats stats)
             => AddAsync("stat", stats);
+        public ValueTask UpdateStatsAsync(StudyStats stats)
+            => UpdateAsync(stats);
 
         ValueTask AddAsync<T>(string objectType, T value)
             => js.InvokeVoidAsync("pouchDb.add", value, objectType);

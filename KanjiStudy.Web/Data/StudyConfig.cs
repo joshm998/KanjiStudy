@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Blazored.LocalStorage;
-using KanjiStudy.SRS.Models;
+using KanjiStudy.Core.Models;
 
 namespace KanjiStudy.Web.Data
 {

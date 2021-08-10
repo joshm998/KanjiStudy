@@ -9,22 +9,13 @@
             });
         },
         getByType: async (objectType) => {
-            var a = await db.find({
+            const items = await db.find({
                 selector: {
                     type: objectType
                 }
             });
-            console.log(a.docs);
-            return(a.docs);
+            return items.docs;
         },
-        getAllByType: async (objectType) => (await db).find({
-            selector: {
-                type: objectType
-            }
-        }, function(err, doc) {
-            // console.log(doc.docs);
-            return(doc.docs);
-        }),
         getAll: async () => (await db).allDocs({include_docs: true, descending: true}, function(err, doc) {
             console.log(doc);
             return(doc.rows);
@@ -43,7 +34,7 @@
         update: async (value) => {
             try {
                 let doc = await db.get(value._id)
-                const updatedDoc = await db.put({...doc, value});
+                const updatedDoc = await db.put({...doc, ...value});
                 console.log("UPDATING DOCUMENT")
                 console.log(updatedDoc);
             }
