@@ -20,6 +20,11 @@ namespace KanjiStudy.Web.Data
         {
             return GetAllAsync<RTKItem>("card");
         }
+        
+        public ValueTask<RTKItem> GetCardById(string id)
+        {
+            return GetById<RTKItem>(id);
+        }
 
         public ValueTask AddCardAsync(RTKItem card)
             => AddAsync("card", card);
@@ -45,6 +50,9 @@ namespace KanjiStudy.Web.Data
         
         ValueTask<T[]> GetAllAsync<T>(string objectType)
             => js.InvokeAsync<T[]>("pouchDb.getByType", objectType);
+        
+        ValueTask<T> GetById<T>(string id)
+            => js.InvokeAsync<T>("pouchDb.getById", id);
         
         private ValueTask GenerateIndexAsync()
             => js.InvokeVoidAsync("pouchDb.generateIndex");

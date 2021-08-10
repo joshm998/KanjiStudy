@@ -16,6 +16,9 @@
             });
             return items.docs;
         },
+        getById: async (id) => {
+            return await db.get(id);
+        },
         getAll: async () => (await db).allDocs({include_docs: true, descending: true}, function(err, doc) {
             console.log(doc);
             return(doc.rows);

@@ -1,9 +1,11 @@
-﻿@page "/add-card"
+﻿@page "/cards/edit"
+@page "/cards/edit/{Id}"
+@using System.ComponentModel.DataAnnotations
 <div class="flex px-4">
     <NavLink href="cards" class="my-auto">
         <i class="fas fa-arrow-left text-2xl"></i>
     </NavLink>
-    <h1 class="text-4xl flex-1 ">Add New Card</h1>
+    <h1 class="text-4xl flex-1 ">@(string.IsNullOrEmpty(Id) ? "Add New Card" : "Edit Card")</h1>
 </div>
 
 
@@ -12,7 +14,7 @@
         <div class="relative p-8 bg-white shadow-sm sm:rounded-xl">
             <EditForm Model="@_cardModel" OnValidSubmit="@HandleValidSubmit" class="w-full mx-auto">
                 <div class="mb-5 relative">
-                    <input type="text" id="notes" class="peer pt-8 border border-gray-200 focus:outline-none rounded-md focus:border-gray-500 focus:shadow-sm w-full p-3 h-16 placeholder-transparent" placeholder="test" @onchange="OnNumberChange"/>
+                    <InputText type="text" id="notes" class="peer pt-8 border border-gray-200 focus:outline-none rounded-md focus:border-gray-500 focus:shadow-sm w-full p-3 h-16 placeholder-transparent" placeholder="test" @bind-Value="_cardModel.Number" @oninput="OnNumberChange"/>
                     <label for="notes" class="peer-placeholder-shown:opacity-100 opacity-75 peer-focus:opacity-75 peer-placeholder-shown:scale-100 scale-75 peer-focus:scale-75 peer-placeholder-shown:translate-y-0 -translate-y-3 peer-focus:-translate-y-3 peer-placeholder-shown:translate-x-0 translate-x-1 peer-focus:translate-x-1 absolute top-0 left-0 px-3 py-5 h-full pointer-events-none transform origin-left transition-all duration-100 ease-in-out"> RTK Number </label>
                 </div>
                 <div class="mb-5 relative">
@@ -41,7 +43,7 @@
                 </div>
                 <DataAnnotationsValidator/>
                 <ValidationSummary/>
-                <button type="submit" class="w-full bg-indigo-600 text-white p-3 rounded-md">Add Card</button>
+                <button type="submit" class="w-full bg-indigo-600 text-white p-3 rounded-md">@(string.IsNullOrEmpty(Id) ? "Add Card" : "Update Card")</button>
             </EditForm>
         </div>
     </div>

@@ -11,12 +11,11 @@
     <div class="select-none bg-gray-50 shadow-md rounded-md flex flex-col flex-1 items-center p-4">
         @if (_selectedStats != null)
         {
-            <h2>@_selectedStats._id</h2>
-            <h2>@_selectedStats.CardsAnswered</h2>
-            <h2>@_selectedStats.HesitantAnswers</h2>
-            <h2>@_selectedStats.IncorrectAnswers</h2>
-            <h2>@_selectedStats.PerfectAnswers</h2>
-            <h2>@_selectedStats.NeverReviewedAnswers</h2>
+            <h2><b>Cards Answered: </b>@_selectedStats.CardsAnswered</h2>
+            <h2><b>Perfect Answers: </b>@_selectedStats.PerfectAnswers</h2>
+            <h2><b>Hesitant Answers: </b>@_selectedStats.HesitantAnswers</h2>
+            <h2><b>Incorrect Answers: </b>@_selectedStats.IncorrectAnswers</h2>
+            <h2><b>Never Reviewed Answers: </b>@_selectedStats.NeverReviewedAnswers</h2>
         }
         else
         {
