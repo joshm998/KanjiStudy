@@ -6,8 +6,11 @@
 <div class="m-4">
     @if (!_sessionResult)
     {
-        <h2>Stats are a WIP</h2>
-        <button class="w-full bg-indigo-600 text-white p-3 rounded-md" @onclick="StartStudySession">Start Study Session</button>
+        @if (_queue != null)
+        {
+            <h2>You Currently Have @_queue.Count Cards to Review</h2>
+            <button class="w-full bg-indigo-600 text-white p-3 rounded-md" @onclick="StartStudySession">Start Study Session</button>
+        }
     }
     else
     {
