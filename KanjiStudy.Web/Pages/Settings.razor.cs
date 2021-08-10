@@ -1,4 +1,4 @@
-﻿using KanjiStudy.SRS.Models;
+﻿using KanjiStudy.Core.Models;
 using KanjiStudy.Web.Data;
 using Microsoft.AspNetCore.Components;
 using System;

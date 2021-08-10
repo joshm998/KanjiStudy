@@ -1,4 +1,4 @@
-﻿namespace KanjiStudy.SRS.Models
+﻿namespace KanjiStudy.Core.Models
 {
     public class RTKImport
     {

@@ -1,10 +1,10 @@
-﻿using KanjiStudy.SRS.Models;
-using SpacedRepetition.Net;
+﻿using SpacedRepetition.Net;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using KanjiStudy.Core.Models;
 
-namespace KanjiStudy.SRS
+namespace KanjiStudy.Core
 {
     public class StudySession
     {
