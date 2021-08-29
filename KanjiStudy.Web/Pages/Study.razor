@@ -77,7 +77,6 @@
             else
             {
                 <div class="flex my-2">
-                    <button class="w-full mr-1 bg-gray-500 text-white p-3 rounded-md" @onclick="() => ReviewItem(ReviewOutcome.NeverReviewed)">Unsure</button>
                     <button class="w-full mx-1 bg-red-500 text-white p-3 rounded-md" @onclick="() => ReviewItem(ReviewOutcome.Incorrect)">Again</button>
                     <button class="w-full mx-1 bg-blue-500 text-white p-3 rounded-md" @onclick="() => ReviewItem(ReviewOutcome.Hesitant)">Hard</button>
                     <button class="w-full ml-1 bg-green-500 text-white p-3 rounded-md" @onclick="() => ReviewItem(ReviewOutcome.Perfect)">Perfect</button>

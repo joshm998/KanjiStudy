@@ -37,8 +37,7 @@ namespace KanjiStudy.Core
         public RTKItem ReviewItem(RTKItem item, ReviewOutcome outcome)
         {
             var reviewItem = _studySession.Review(item, outcome);
-            UpdateSessionStatus();
-            item.ReviewDate = reviewItem.ReviewDate;
+            item.ReviewDate = _studySession.ReviewStrategy.NextReview(reviewItem);
             item.PreviousCorrectReview = reviewItem.PreviousCorrectReview;
             item.CorrectReviewStreak = reviewItem.CorrectReviewStreak;
             item.DifficultyRating = reviewItem.DifficultyRating;
@@ -58,6 +57,11 @@ namespace KanjiStudy.Core
                     SessionStats.NeverReviewedAnswers++;
                     break;
             }
+            if (item.ReviewDate <= DateTime.Now) {
+                _itemQueue.Add(item);
+                CardCount++;
+            }
+            UpdateSessionStatus();
             return item;
         }
 
