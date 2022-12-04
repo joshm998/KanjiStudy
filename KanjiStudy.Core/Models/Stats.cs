@@ -1,10 +1,10 @@
 ﻿using System;
 
-namespace KanjiStudy.SRS.Models
+namespace KanjiStudy.Core.Models
 {
     public class StudyStats
     {
-        public DateTime Date { get; set; } 
+        public DateTime _id { get; set; } 
         public int CardsAnswered { get; set; }
         public int NeverReviewedAnswers { get; set; }
         public int IncorrectAnswers { get; set; }

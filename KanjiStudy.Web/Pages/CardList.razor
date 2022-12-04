@@ -1,7 +1,7 @@
 ﻿@page "/cards"
 <div class="flex px-4">
     <h1 class="text-4xl flex-1 ">Card List</h1>
-    <NavLink href="add-card" class="my-auto">
+    <NavLink href="cards/edit" class="my-auto">
         <i class="fas fa-plus text-2xl"></i>
     </NavLink>
 </div>
@@ -14,7 +14,7 @@
         <div class="w-full px-4 flex flex-col">
             <h1 class="text-3xl mx-auto mt-5">No Cards</h1>
             <h1 class="text-lg mt-2 mx-auto">Get Started by adding some new cards.</h1>
-             <NavLink href="add-card" class="mt-5 bg-indigo-600 text-white p-3 rounded-md mx-auto">Add a New Card</NavLink>
+             <NavLink href="cards/edit" class="mt-5 bg-indigo-600 text-white p-3 rounded-md mx-auto">Add a New Card</NavLink>
         </div>
     </div>
 }
@@ -32,6 +32,7 @@ else
                 <ul>
                     @foreach (var item in FilteredItems)
                     {
+                        <NavLink href="@($"cards/edit/{item._id}")" class="text-black">
                         <li class="border-gray-400 flex flex-row mb-3">
                             <div
                                 class="select-none cursor-pointer bg-gray-50 shadow-md rounded-md flex flex-1 items-center p-4  transition duration-500 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
@@ -45,6 +46,7 @@ else
                                 <div class="text-gray-600 text-xs">Due: @item.ReviewDate</div>
                             </div>
                         </li>
+                        </NavLink>
                     }
                 </ul>
             }

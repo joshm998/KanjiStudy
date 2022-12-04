@@ -9,7 +9,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Blazored.LocalStorage;
-using KanjiStudy.SRS;
+using KanjiStudy.Core;
 using KanjiStudy.Web.Helpers;
 
 namespace KanjiStudy.Web

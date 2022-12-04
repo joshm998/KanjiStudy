@@ -1,10 +1,10 @@
-﻿using KanjiStudy.SRS.Models;
-using SpacedRepetition.Net;
+﻿using SpacedRepetition.Net;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using KanjiStudy.Core.Models;
 
-namespace KanjiStudy.SRS
+namespace KanjiStudy.Core
 {
     public class StudySession
     {
@@ -37,8 +37,7 @@ namespace KanjiStudy.SRS
         public RTKItem ReviewItem(RTKItem item, ReviewOutcome outcome)
         {
             var reviewItem = _studySession.Review(item, outcome);
-            UpdateSessionStatus();
-            item.ReviewDate = reviewItem.ReviewDate;
+            item.ReviewDate = _studySession.ReviewStrategy.NextReview(reviewItem);
             item.PreviousCorrectReview = reviewItem.PreviousCorrectReview;
             item.CorrectReviewStreak = reviewItem.CorrectReviewStreak;
             item.DifficultyRating = reviewItem.DifficultyRating;
@@ -58,6 +57,11 @@ namespace KanjiStudy.SRS
                     SessionStats.NeverReviewedAnswers++;
                     break;
             }
+            if (item.ReviewDate <= DateTime.Now) {
+                _itemQueue.Add(item);
+                CardCount++;
+            }
+            UpdateSessionStatus();
             return item;
         }
 

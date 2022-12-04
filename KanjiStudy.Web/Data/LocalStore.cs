@@ -1,4 +1,4 @@
-﻿using KanjiStudy.SRS.Models;
+﻿using KanjiStudy.Core.Models;
 using Microsoft.JSInterop;
 using System;
 using System.Collections.Generic;
@@ -13,28 +13,48 @@ namespace KanjiStudy.Web.Data
         public LocalStore(IJSRuntime js)
         {
             this.js = js;
+            GenerateIndexAsync();
         }
 
         public ValueTask<RTKItem[]> GetCardsAsync()
         {
-            return GetAllAsync<RTKItem>("cardstore");
+            return GetAllAsync<RTKItem>("card");
+        }
+        
+        public ValueTask<RTKItem> GetCardById(string id)
+        {
+            return GetById<RTKItem>(id);
         }
 
-        public ValueTask SaveCardAsync(RTKItem card)
-            => PutAsync("cardstore", null, card);
+        public ValueTask AddCardAsync(RTKItem card)
+            => AddAsync("card", card);
+        
+        public ValueTask UpdateCardAsync(RTKItem card)
+            => UpdateAsync(card);
         
         public ValueTask<StudyStats[]> GetStatsAsync()
         {
-            return GetAllAsync<StudyStats>("statstore");
+            return GetAllAsync<StudyStats>("stat");
         }
         
-        public ValueTask SaveStatsAsync(StudyStats stats)
-            => PutAsync("statstore", null, stats);
+        public ValueTask AddStatsAsync(StudyStats stats)
+            => AddAsync("stat", stats);
+        public ValueTask UpdateStatsAsync(StudyStats stats)
+            => UpdateAsync(stats);
 
-        ValueTask PutAsync<T>(string storeName, object key, T value)
-            => js.InvokeVoidAsync("localCardStore.put", storeName, key, value);
+        ValueTask AddAsync<T>(string objectType, T value)
+            => js.InvokeVoidAsync("pouchDb.add", value, objectType);
         
-        ValueTask<T[]> GetAllAsync<T>(string storeName)
-            => js.InvokeAsync<T[]>("localCardStore.getAll", storeName);
+        ValueTask UpdateAsync<T>(T value)
+            => js.InvokeVoidAsync("pouchDb.update", value);
+        
+        ValueTask<T[]> GetAllAsync<T>(string objectType)
+            => js.InvokeAsync<T[]>("pouchDb.getByType", objectType);
+        
+        ValueTask<T> GetById<T>(string id)
+            => js.InvokeAsync<T>("pouchDb.getById", id);
+        
+        private ValueTask GenerateIndexAsync()
+            => js.InvokeVoidAsync("pouchDb.generateIndex");
     }
 }

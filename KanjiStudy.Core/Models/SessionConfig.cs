@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace KanjiStudy.SRS.Models
+namespace KanjiStudy.Core.Models
 {
     public class SessionConfig
     {
