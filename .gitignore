@@ -351,3 +351,7 @@ MigrationBackup/
 
 #IntelliJ Rider Files
 .idea/
+
+#Electron App
+KanjiStudy.App/wwwroot/
+KanjiStudy.App/dist/
