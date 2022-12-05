@@ -13,6 +13,8 @@ let mainWindow;
         height: 600,
     });
 
+    await mainWindow.removeMenu();
+
 	await loadURL(mainWindow);
     
 })();
