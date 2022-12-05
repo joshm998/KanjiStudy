@@ -21,6 +21,10 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 17
+      
+        # Runs NPM Install to install Node Packages
+      - name: Runs NPM Install
+        run: npm install --prefix "./KanjiStudy.Web/" 
 
       - name: Install Snapcraft
         uses: samuelmeuli/action-snapcraft@v1
