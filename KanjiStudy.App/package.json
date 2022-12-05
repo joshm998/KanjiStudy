@@ -1,0 +1,24 @@
+{
+  "name": "kanjistudy",
+  "version": "0.0.4",
+  "description": "Kanji Study Desktop App",
+  "main": "main.js",
+  "author": "Josh Mangiola",
+  "license": "MIT",
+  "scripts": {
+    "start": "npm run build && electron .",
+    "build": "npm run delete-wwwroot && npm run publish-app && npm run move-files && npm run delete-build",
+    "delete-wwwroot": "rm -rf wwwroot/",
+    "publish-app": "dotnet publish ../KanjiStudy.Web /p:PublishDir=../KanjiStudy.App/build",
+    "move-files": "mv build/wwwroot/ wwwroot/",
+    "delete-build": "rm -rf build/",
+    "dist": "npm run build && electron-builder --linux snap"
+  },
+  "devDependencies": {
+    "electron": "^22.0.0",
+    "electron-builder": "^23.6.0"
+  },
+  "dependencies": {
+    "electron-serve": "^1.1.0"
+  }
+}
